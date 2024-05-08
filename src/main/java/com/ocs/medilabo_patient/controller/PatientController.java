@@ -2,10 +2,12 @@ package com.ocs.medilabo_patient.controller;
 
 import com.ocs.medilabo_patient.model.Patient;
 import com.ocs.medilabo_patient.service.PatientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -30,7 +32,7 @@ public class PatientController {
     }
 
     @PostMapping
-    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient) {
+    public ResponseEntity<Patient> addPatient(@Valid @RequestBody Patient patient) {
         Patient newPatient = patientService.save(patient);
         return new ResponseEntity<>(newPatient, HttpStatus.CREATED);
     }
