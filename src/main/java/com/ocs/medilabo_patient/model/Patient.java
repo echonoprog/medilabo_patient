@@ -2,6 +2,7 @@ package com.ocs.medilabo_patient.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -35,8 +36,9 @@ public class Patient {
     @NotBlank(message= " Le nom est obligatoire")
     private String nom;
 
-
+    @NotNull(message = "La date de naissance est obligatoire")
     @Column(name = "date_de_naissance")
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dateDeNaissance;
 
 
